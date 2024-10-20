@@ -5,7 +5,13 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    storeData: [],
+    storeData: [
+      { id: 1, value: '' },
+      { id: 2, value: '' },
+      { id: 3, value: '' },
+      { id: 4, value: '' },
+      { id: 5, value: '' },
+    ],
   },
   getters: {
     getData: (state) => state.storeData,
@@ -16,25 +22,18 @@ export default new Vuex.Store({
     },
   },
   actions: {
-    loadData: ({ commit }) => {
+    loadData: ({ commit, state }) => {
       return new Promise((resolve) => {
         setTimeout(() => {
-          const payload = [
-            { id: 1, value: 'value 1' },
-            { id: 2, value: 'value 2' },
-            { id: 3, value: 'value 3' },
-            { id: 4, value: 'value 4' },
-            { id: 5, value: 'value 5' },
-          ];
-
-          commit('setData', payload);
+          commit('setData', state.storeData);
           resolve();
         }, 1000);
       });
     },
-    sendData: () => {
+    sendData: ({ commit }, payload) => {
       return new Promise((resolve) => {
         setTimeout(() => {
+          commit('setData', payload);
           resolve();
         }, 1000);
       });

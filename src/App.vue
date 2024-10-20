@@ -84,8 +84,7 @@ export default {
       this.isShowModal = false;
     },
     async saveData() {
-      this.setData(this.data);
-      await this.sendData();
+      await this.sendData(this.data);
       this.closeModal();
     },
   },
