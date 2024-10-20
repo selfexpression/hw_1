@@ -5,13 +5,39 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
+    store_data: [],
   },
   getters: {
+    getData: (state) => state.store_data,
   },
   mutations: {
+    setData: (state, payload) => {
+      state.store_data = payload;
+    },
   },
   actions: {
-  },
-  modules: {
+    loadData: ({ commit }) => {
+      return new Promise((resolve) => {
+        setTimeout(() => {
+          const payload = [
+            { id: 1, value: 'value 1' },
+            { id: 2, value: 'value 2' },
+            { id: 3, value: 'value 3' },
+            { id: 4, value: 'value 4' },
+            { id: 5, value: 'value 5' },
+          ];
+
+          commit('setData', payload);
+          resolve();
+        }, 1000);
+      });
+    },
+    sendData: () => {
+      return new Promise((resolve) => {
+        setTimeout(() => {
+          resolve();
+        }, 1000);
+      });
+    },
   },
 });
