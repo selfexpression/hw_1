@@ -65,7 +65,7 @@ export default {
   },
   computed: {
     ...mapState({
-      store_data: (state) => state.store_data,
+      storeData: (state) => state.storeData,
     }),
   },
   methods: {
@@ -73,7 +73,7 @@ export default {
     ...mapActions(['loadData', 'sendData']),
     async openEditModal() {
       await this.loadData();
-      this.data = JSON.parse(JSON.stringify(this.store_data));
+      this.data = JSON.parse(JSON.stringify(this.storeData));
       this.isShowModal = true;
     },
     openModal() {

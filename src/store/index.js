@@ -5,14 +5,14 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    store_data: [],
+    storeData: [],
   },
   getters: {
-    getData: (state) => state.store_data,
+    getData: (state) => state.storeData,
   },
   mutations: {
     setData: (state, payload) => {
-      state.store_data = payload;
+      state.storeData = payload;
     },
   },
   actions: {
